@@ -199,7 +199,6 @@ const EstudioPlazaPage = (props: EstudioPlazaProps) => {
         let totalCalcConReserva;
         setFinalValues(totalSinReservaObj);
         if ((sellado && honorarios) !== '') {
-            // const verifyyData =  Object.values(totalSinReservaObj).every((value) => value !== 0 && value !== '');
             if (verifyDataSinReserva) {
                 totalCalcSinReserva = convertir(totalSinReservaObj.alquiler) + convertir(totalSinReservaObj.averiguaciones) 
                     + convertir(totalSinReservaObj.honorarios) + convertir(totalSinReservaObj.seguro) + convertir(totalSinReservaObj.totalCopias) + convertir(totalSinReservaObj.sellado);
@@ -208,7 +207,6 @@ const EstudioPlazaPage = (props: EstudioPlazaProps) => {
             } 
         }
         if ((sellado && honorarios && totalSinReservaObj.alquiler && totalConReservaObj.reserva) !== '') {
-            // const verifyyData =  Object.values(totalConReserva).every((value) => value !== '');
             if (verifyDataConReserva) {
                 totalCalcConReserva = convertir(totalConReservaObj.reserva) - convertir(totalConReservaObj.noSeLeCobra)
                 totalCalcConReserva = numberSeparation(totalCalcConReserva);
