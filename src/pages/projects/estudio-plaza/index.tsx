@@ -10,27 +10,27 @@ import {numberSeparation, reverseNumberSeparation} from '../../../hooks/numberSe
 import useValuesEP from '../../../hooks/useValuesEP';
 
 const INITIAL_VALUES = {
-    inmueble: ['vivienda', 'comercio'], 
-    meses: [36, 37], 
+    Inmueble: ['vivienda', 'comercio'], 
+    Meses: [36, 37], 
     selladoVivienda: 0.60, // %
     selladoComercio: 1.0, // %
     precioCopias: 3.20, // c/u
-    honorarios: 0.05, // alquiler x 36/37meses
-    ivaHonorarios: 0.21, // %
+    Honorarios: 0.05, // Alquiler x 36/37meses
+    IVA: 0.21, // %
     precioAveriguaciones: 2000, // 
-    seguroMenor: 850, // si el inmueble es menor a 100mts
-    seguroMayor: 1450, // si el inmueble es mayor a 100mts
-    seguro: [850, 1450] // si el inmueble es menor o mayor a 100 mts respectivamente
+    seguroMenor: 850, // si el Inmueble es menor a 100mts
+    seguroMayor: 1450, // si el Inmueble es mayor a 100mts
+    Seguro: [850, 1450] // si el Inmueble es menor o mayor a 100 mts respectivamente
 }
 // const INITIAL_CALC_VALUES = {
 //     SelladoVivienda: 0.60, // %
 //     SelladoComercio: 1.0, // %
 //     PrecioCopias: 3.20, // c/u
-//     Honorarios: 0.05, // alquiler x 36/37meses
+//     Honorarios: 0.05, // Alquiler x 36/37meses
 //     IVA: 0.21, // %
 //     PrecioAveriguaciones: 2000, // 
-//     SeguroMenor: 850, // si el inmueble es menor a 100mts
-//     SeguroMayor: 1450, // si el inmueble es mayor a 100mts
+//     SeguroMenor: 850, // si el Inmueble es menor a 100mts
+//     SeguroMayor: 1450, // si el Inmueble es mayor a 100mts
 // }
 
 type EstudioPlazaProps = {
@@ -68,10 +68,10 @@ const EstudioPlazaPage = (props: EstudioPlazaProps) => {
         }
     }, [verifyValues === true]);
 
-    const [inmueble, setInmueble] = useState('');
-    const [meses, setMeses] = useState('');
-    const [sellado, setSellado] = useState('');
-    const [honorarios, setHonorarios] = useState({iva: '', honorariosTotal: ''});
+    const [Inmueble, setInmueble] = useState('');
+    const [Meses, setMeses] = useState('');
+    const [Sellado, setSellado] = useState('');
+    const [Honorarios, setHonorarios] = useState({iva: '', honorariosTotal: ''});
     const [totalSinReserva, setTotalSinReserva] = useState('');
     const [totalConReserva, setTotalConReserva] = useState('');
     const [Total, setTotal] = useState('');
@@ -89,51 +89,51 @@ const EstudioPlazaPage = (props: EstudioPlazaProps) => {
     })
 
     const finalData = {
-        inmueble: '', // vivienda o comercio
-        alquiler: '', // $$
-        meses: 0, // 36/37...
-        sellado: '', // $$
-        totalCopias: '', // $$
-        honorarios: '',// $$
-        ivaHonorarios: '',
-        averiguaciones: '',
-        seguro: '',
+        Inmueble: '', // vivienda o comercio
+        Alquiler: '', // $$
+        Meses: 0, // 36/37...
+        Sellado: '', // $$
+        PrecioTotalCopias: '', // $$
+        Honorarios: '',// $$
+        IVA: '',
+        Averiguaciones: '',
+        Seguro: '',
     }
     const [finalValues, setFinalValues] = useState(finalData)
 
     const handleChange = (e: any)=> {
         e.preventDefault();
         const formatedValue = numberSeparation(e.target.value);
-        setFinalValues({... finalValues, alquiler: formatedValue});
+        setFinalValues({... finalValues, Alquiler: formatedValue});
     };
 
     const onSelectInmuebleChange = (e: any) => {
         setInmueble(e?.target?.value);
-        setFinalValues({... finalValues, inmueble: e?.target?.value})
+        setFinalValues({... finalValues, Inmueble: e?.target?.value})
     };
     const onSelectMesesChange = (e: any) => {
         setMeses(e?.target?.value);
-        setFinalValues({... finalValues, meses: e?.target?.value})
+        setFinalValues({... finalValues, Meses: e?.target?.value})
     };
     const handleChangeCopias = (e: any)=> {
         e.preventDefault();
         const valorCopias = e.target.value * initialValuesToCalc.PrecioCopias;
         const formatedValue = numberSeparation(valorCopias);
-        setFinalValues({... finalValues, totalCopias: formatedValue});
+        setFinalValues({... finalValues, PrecioTotalCopias: formatedValue});
     };
 
     const handleChangeInformes = (e: any)=> {
         e.preventDefault();
         const valorInformes = e.target.value * initialValuesToCalc.PrecioAveriguaciones;
         const formatedValue = numberSeparation(valorInformes);
-        setFinalValues({... finalValues, averiguaciones: formatedValue});
+        setFinalValues({... finalValues, Averiguaciones: formatedValue});
     };
 
     const handleChangeSeguro = (e: any)=> {
         e.preventDefault();
-        const seguro = (e.target.value > 100) ? initialValuesToCalc.SeguroMayor : initialValuesToCalc.SeguroMenor;
-        const formatedValue = numberSeparation(seguro);
-        setFinalValues({... finalValues, seguro: formatedValue});
+        const Seguro = (e.target.value > 100) ? initialValuesToCalc.SeguroMayor : initialValuesToCalc.SeguroMenor;
+        const formatedValue = numberSeparation(Seguro);
+        setFinalValues({... finalValues, Seguro: formatedValue});
     };
 
     const handleChangeReserva = (e: any)=> {
@@ -144,13 +144,13 @@ const EstudioPlazaPage = (props: EstudioPlazaProps) => {
 
     const handleChangeDate = (e: any)=> {
         e.preventDefault();
-        if (finalValues.alquiler !== '' ) {
+        if (finalValues.Alquiler !== '' ) {
             const daySelected = new Date(`${e.target.value}T00:00:00`).getDate()
             const date: Date = new Date;
             const month = date.getMonth();
             const year = date.getFullYear();
             const daysInMonth = new Date( year, month + 1, 0 ).getDate();
-            const AlquilerPorDia = finalValues.alquiler ? reverseNumberSeparation(finalValues.alquiler) / daysInMonth : 0
+            const AlquilerPorDia = finalValues.Alquiler ? reverseNumberSeparation(finalValues.Alquiler) / daysInMonth : 0
             AlquilerPorDia.toPrecision(3);
             const noSeLeCobra = AlquilerPorDia * daySelected;
             setBonificacion({
@@ -172,16 +172,16 @@ const EstudioPlazaPage = (props: EstudioPlazaProps) => {
         return value;
     };
     useEffect(()=> {
-        const selladoInmueble = finalValues.inmueble === 'vivienda' ? 0.006 : 0.009;
-        if (finalValues.meses !== 0) {
-             // op sellado y honorarios
-            let convertAlquiler=  (finalValues.alquiler !== '') ? convertir(finalValues.alquiler) : 0;
-            let alquilerXmeses = convertAlquiler * finalValues.meses;
+        const selladoInmueble = finalValues.Inmueble === 'vivienda' ? 0.006 : 0.009;
+        if (finalValues.Meses !== 0) {
+             // op Sellado y Honorarios
+            let convertAlquiler=  (finalValues.Alquiler !== '') ? convertir(finalValues.Alquiler) : 0;
+            let alquilerXmeses = convertAlquiler * finalValues.Meses;
             let alquilerXmesesHonorarios = alquilerXmeses * initialValuesToCalc.Honorarios;
             let ivaalquilerXmesesHonorarios = alquilerXmesesHonorarios * initialValuesToCalc.IVA;
             if (convertAlquiler !== 0) {
                 let honorariosCalculo =  alquilerXmesesHonorarios + ivaalquilerXmesesHonorarios;
-                let selladoCalculo = convertAlquiler * finalValues.meses * selladoInmueble;
+                let selladoCalculo = convertAlquiler * finalValues.Meses * selladoInmueble;
                 setSellado(numberSeparation(selladoCalculo));
                 setHonorarios({iva: numberSeparation(ivaalquilerXmesesHonorarios), honorariosTotal: numberSeparation(honorariosCalculo)});
             };
@@ -191,7 +191,7 @@ const EstudioPlazaPage = (props: EstudioPlazaProps) => {
     }, [finalValues])
 
     const TotalCalc = () => {
-        let totalSinReservaObj = {... finalValues, sellado: sellado, honorarios: honorarios.honorariosTotal, ivaHonorarios: honorarios.iva};
+        let totalSinReservaObj = {... finalValues, Sellado: Sellado, Honorarios: Honorarios.honorariosTotal, IVA: Honorarios.iva};
         let totalConReservaObj= {... bonificacion}
         const verifyDataSinReserva =  Object.values(totalSinReservaObj).every((value) => value !== 0 && value !== '');
         const verifyDataConReserva =  Object.values(totalConReservaObj).every((value) => value !== 0 && value !== '');
@@ -199,15 +199,15 @@ const EstudioPlazaPage = (props: EstudioPlazaProps) => {
             let totalCalcSinReserva;
             let totalCalcConReserva;
             setFinalValues(totalSinReservaObj);
-            if ((sellado && honorarios) !== '') {
+            if ((Sellado && Honorarios) !== '') {
                 if (verifyDataSinReserva) {
-                    totalCalcSinReserva = convertir(totalSinReservaObj.alquiler) + convertir(totalSinReservaObj.averiguaciones) 
-                        + convertir(totalSinReservaObj.honorarios) + convertir(totalSinReservaObj.seguro) + convertir(totalSinReservaObj.totalCopias) + convertir(totalSinReservaObj.sellado);
+                    totalCalcSinReserva = convertir(totalSinReservaObj.Alquiler) + convertir(totalSinReservaObj.Averiguaciones) 
+                        + convertir(totalSinReservaObj.Honorarios) + convertir(totalSinReservaObj.Seguro) + convertir(totalSinReservaObj.PrecioTotalCopias) + convertir(totalSinReservaObj.Sellado);
                         totalCalcSinReserva = numberSeparation(totalCalcSinReserva);
                     setTotalSinReserva(totalCalcSinReserva);
                 } 
             }
-            if ((sellado && honorarios && totalSinReservaObj.alquiler && totalConReservaObj.Reserva) !== '') {
+            if ((Sellado && Honorarios && totalSinReservaObj.Alquiler && totalConReservaObj.Reserva) !== '') {
                 if (verifyDataConReserva) {
                     totalCalcConReserva = convertir(totalConReservaObj.Reserva) - convertir(totalConReservaObj.DiasBonificados)
                     totalCalcConReserva = numberSeparation(totalCalcConReserva);
@@ -222,29 +222,29 @@ const EstudioPlazaPage = (props: EstudioPlazaProps) => {
     };
 
     return (
-    <BoxView large='100vh' style={{backgroundColor: 'lightblue', backgroundImage:` linear-gradient(to right, ${PaletColor.one} 0%, #b2ccd4 46%)`}}>
+    <BoxView large='100vh' style={{backgroundColor: 'lightblue', backgroundImage:` linear-gradient(to right, ${PaletColor.one} 0%, #b2ccd4 46%)`, justifyContent: 'unset', padding: '4% 0'}}>
         <StyledWarnigP>{ (values === undefined) ? 'LOS DATOS PUEDEN ESTAR DESACTUALIZADOS: No hay conexion a internet o ocurrio un error al obtener los datos de la base de datos'  : '' }</StyledWarnigP>
-        <BoxStyled large='auto' wide='90%'>
+        <BoxStyled large='auto' wide='auto'>
             <form style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                <CustomDivForm style={{display: 'flex', flexDirection: 'column', width: '300px', placeItems: 'center'}}>
-                    <select onChange={onSelectInmuebleChange} value={inmueble} placeholder='Seleccione inmueble'>
-                        <option value={''} disabled hidden> Seleccione inmueble </option>
-                        {INITIAL_VALUES.inmueble.map((x, y)=> <option key={y} value={x}>{x}</option>)}
+                <CustomDivForm style={{display: 'flex', flexDirection: 'column', placeItems: 'center'}}>
+                    <select onChange={onSelectInmuebleChange} value={Inmueble} placeholder='Seleccione Inmueble'>
+                        <option value={''} disabled hidden> Seleccione Inmueble </option>
+                        {INITIAL_VALUES.Inmueble.map((x, y)=> <option key={y} value={x}>{x}</option>)}
                     </select>
                     <div style={{height: '40px', display: 'flex', width: '340px', placeItems: 'center', whiteSpace: 'nowrap', justifyContent: 'center'}}>
                         <CustomInput type='number' variant='InputEstudioPlaza' onChange={handleChange} placeholder='Monto' />
-                        {(finalValues.alquiler && finalValues.alquiler !== '0')  &&  <p>{' 80% ==> ' +  numberSeparation(parseFloat((reverseNumberSeparation(finalValues.alquiler) * 0.8).toFixed(2))) + '$'}</p> }
+                        {(finalValues.Alquiler && finalValues.Alquiler !== '0')  &&  <p>{' 80% ==> ' +  numberSeparation(parseFloat((reverseNumberSeparation(finalValues.Alquiler) * 0.8).toFixed(2))) + '$'}</p> }
                 
                     </div>
-                    <select onChange={onSelectMesesChange} value={meses} placeholder='Seleccione meses'>
-                        <option value={''} disabled hidden> Seleccione meses </option>
-                        {INITIAL_VALUES.meses.map((x, y)=> <option key={y} value={x}>{x}</option>)}
+                    <select onChange={onSelectMesesChange} value={Meses} placeholder='Seleccione Meses'>
+                        <option value={''} disabled hidden> Seleccione Meses </option>
+                        {INITIAL_VALUES.Meses.map((x, y)=> <option key={y} value={x}>{x}</option>)}
                     </select>
                     <CustomInput type='number' variant='InputEstudioPlaza' onChange={handleChangeCopias} placeholder='Cantidad de copias' /> 
                     <CustomInput type='number' variant='InputEstudioPlaza' onChange={handleChangeInformes} placeholder='Cantidad de informes' /> 
-                    <CustomInput type='number' variant='InputEstudioPlaza' onChange={handleChangeSeguro} placeholder='Metros del inmueble' /> 
+                    <CustomInput type='number' variant='InputEstudioPlaza' onChange={handleChangeSeguro} placeholder='Metros del Inmueble' /> 
                 </CustomDivForm>
-                <CustomDivForm style={{display: 'flex', flexDirection: 'column', width: '300px', placeItems: 'center'}}> 
+                <CustomDivForm style={{display: 'flex', flexDirection: 'column', width: '200px', placeItems: 'center'}}> 
                     <CustomInput type='number' variant='InputEstudioPlaza' onChange={handleChangeReserva} placeholder='Reserva' /> 
                     <CustomInput type='date' variant='InputEstudioPlaza' onChange={handleChangeDate} placeholder='Reserva' /> 
                 </CustomDivForm>
@@ -256,19 +256,9 @@ const EstudioPlazaPage = (props: EstudioPlazaProps) => {
 
             {Total !== '' && <Prices>{Total + '$'}</Prices> }
         </BoxStyled>
-        <BoxStyledBottom large='360px' style={{display: 'flex', flexDirection: 'row', minWidth: '600px'}}>
+        <BoxStyledBottom large='400px' style={{display: 'flex', flexDirection: 'row', minHeight: '400px'}}>
             <CustomDiv> 
-                <Values name={'inmueble'} value={finalValues.inmueble && finalValues.inmueble} />
-                {/* <p>Inmueble == {finalValues.inmueble ? <Prices>{finalValues.inmueble}</Prices>  : 'no se ingreso'}</p> */}
-                <p>Valor del alquiler == {finalValues.alquiler ? <Prices>{finalValues.alquiler + '$'}</Prices> : 'no se ingreso'}</p>
-                <p>Meses == {finalValues.meses ? <Prices>{finalValues.meses}</Prices> : 'no se ingreso'}</p>
-                <p>Sellado == {sellado ? <Prices>{sellado + '$'}</Prices> : 'no se ingreso'}</p>
-                <p>Copias == {finalValues.totalCopias ? <Prices>{finalValues.totalCopias + '$'}</Prices>  : 'no se ingreso'}</p>
-                <p>Honorarios == {honorarios.honorariosTotal ? <Prices>{honorarios.honorariosTotal + '$'}</Prices>  : 'no se ingreso'}</p>
-                <p>IVA de los Honorarios == {honorarios.iva ? <Prices>{honorarios.iva + '$'}</Prices>  : 'no se ingreso'}</p>
-                <p>Averiguaciones == {finalValues.averiguaciones ? <Prices>{finalValues.averiguaciones + '$'}</Prices>  : 'no se ingreso'}</p>
-                <p>Seguro == {finalValues.seguro ? <Prices>{finalValues.seguro + '$'}</Prices>  : 'no se ingreso'}</p>
-                <p>Total SIN Reserva== {totalSinReserva ? <Prices>{totalSinReserva + '$'}</Prices>  : 'no se ingreso'}</p>
+                {ObtenerValor(finalValues, '', 'no se ingreso')}
             </CustomDiv>
             <CustomDiv> 
                 {ObtenerValor(bonificacion, '', 'no se ingreso')};
@@ -283,7 +273,7 @@ export default EstudioPlazaPage;
 export const CustomDiv = styled.div`
     display: flex;
     flex-direction: column;
-    width: 320px;
+    width: 350px;
     max-width: 400px;
     height: 340px;
     margin: 0 8px;
@@ -298,12 +288,17 @@ export const CustomDiv = styled.div`
     }
 `
 export const CustomDivForm = styled(CustomDiv)`
-    height: 360px;
+    height: 280px;
+    width: 200px;
+    max-width: 300px;
+    display: 'flex';
+    flex-direction: 'column';
+    place-items: 'center';
     input {
-        margin: 14px 0;
+        margin: 6px 0;
     }
     select {
-        margin: 20px 0;
+        margin: 10px 0;
     }
 `
 export const BoxStyled = styled(BoxView)`
@@ -311,12 +306,19 @@ export const BoxStyled = styled(BoxView)`
     border-radius: 4px;
     box-shadow: -2px 2px 18px 6px #4c4c74;
     padding: 2% 0%;
+    width: 90%;
+    max-width: 740px;
+    min-width: 510px;
+    min-height: 320px;
 `
 const BoxStyledBottom = styled(BoxView)`
     display: flex;
     flex-direction: row;
     background-color: aliceblue;
     width: 90%;
+    min-width: 500px;
+    min-height: 400px;
+    max-width: 740px;
     margin: 2% 0;
     border-radius: 4px;
     box-shadow: -2px 2px 18px 6px #4c4c74;

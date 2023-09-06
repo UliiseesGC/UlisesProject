@@ -105,7 +105,7 @@ const BaseDeDatosPages = () => {
 
     return (
     <BoxView large='100vh'>        
-        <BoxStyled large='800px' wide='700px'>
+        <BoxStyled large='800px' wide='500px'>
             <StyleButtonEP onClick={()=> navigate('/practice/estudio-plaza')}> Volver </StyleButtonEP>
             <DivCustom>
                 <DivForm style={{display: 'flex', flexDirection: 'column', width: '300px', height: '400px', placeItems: 'center'}}>
