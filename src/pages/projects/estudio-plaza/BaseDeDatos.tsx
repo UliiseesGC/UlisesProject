@@ -61,7 +61,7 @@ const BaseDeDatosPages = () => {
         }
     };
 
-    const updateObjToDB = () => {
+    const updateObjToDataBase = () => {
         useUpdateValuesEP(newData,"values", docId, setLoadValues);
     }
 
@@ -119,7 +119,7 @@ const BaseDeDatosPages = () => {
                     <CustomInput type='number' variant='InputEstudioPlaza' onChange={handleChangeSeguroMenor} placeholder='SeguroMenor' /> 
                     <CustomInput type='number' variant='InputEstudioPlaza' onChange={handleChangeSeguroMayor} placeholder='SeguroMayor' /> 
                 </DivForm>
-                <StyleButtonEP onClick={() => updateObjToDB()}> Guardar los datos </StyleButtonEP>
+                <StyleButtonEP onClick={() => updateObjToDataBase()}> Guardar los datos </StyleButtonEP>
                 {/* <button onClick={() => addToDB()}> Guardar los datos </button> */}
             </DivCustom>
             <DivCustom style={{height: '250px'}}>
