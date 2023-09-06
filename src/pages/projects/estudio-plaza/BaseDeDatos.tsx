@@ -7,9 +7,8 @@ import ObtenerValor from '../../../components/values-ep/listOfValues';
 import useValuesEP from '../../../hooks/useValuesEP';
 import { CustomInput } from '../../../components/input';
 import { styled } from 'styled-components';
-import { numberSeparation } from '../../../hooks/numberSeparation';
 import { values } from '../../../hooks/useValuesEP';
-import useUpdateValuesEP from '../../../hooks/updateValuesEP';
+import useActualiceDataEP from '../../../hooks/updateValuesEP';
 import { useNavigate } from 'react-router-dom';
 import { StyleButtonEP } from '.';
 
@@ -62,7 +61,7 @@ const BaseDeDatosPages = () => {
     };
 
     const updateObjToDataBase = () => {
-        useUpdateValuesEP(newData,"values", docId, setLoadValues);
+        useActualiceDataEP(newData,"values", docId, setLoadValues);
     }
 
     const handleChangeSelladoVivienda = (e: any)=> {
