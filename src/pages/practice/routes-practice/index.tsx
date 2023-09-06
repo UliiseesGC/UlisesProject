@@ -4,7 +4,6 @@ import { Context } from "../../../context/GifsContext";
 const RoutesPractice = () => {
     const asd = useContext(Context);
     const {gifs} = asd;
-    // console.log(gifs);
 
     return (
     <>

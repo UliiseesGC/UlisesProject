@@ -4,7 +4,6 @@ import { Context } from "../context/GifsContext";
 
 
 const useGifs = (search: string) => {
-    // const [gifs, setGifs] = useState<{id: string, title: string, url: string}[]>([]);
     const [loadingGifs, setLoadingGifs] = useState(false);
     const contentGifs = useContext(Context);
     const {gifs, setGifs} = contentGifs;

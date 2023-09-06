@@ -8,7 +8,8 @@ import GiphyPage from '../pages/projects/giphy';
 import ProjectsPages from '../pages/projects';
 import { GifsContextProvider } from '../context/GifsContext';
 import OneGiphyPage from '../pages/projects/giphy/id';
-import EstudioPlazaPage from '../pages/estudio-plaza';
+import EstudioPlazaPage from '../pages/projects/estudio-plaza';
+import BaseDeDatosPages from '../pages/projects/estudio-plaza/BaseDeDatos';
 
 const router = createBrowserRouter (createRoutesFromElements(
     <>
@@ -24,8 +25,9 @@ const router = createBrowserRouter (createRoutesFromElements(
             <Route path='type' element={<TypesPractice />} />
             <Route path='abstraccion' element={<RoutesPractice />} />
             <Route path='giphy-page' element={<GiphyPage />} />
-            <Route  path='giphy-page/:id' element={<OneGiphyPage />}/>   
-            <Route path='estudio-plaza' element={<EstudioPlazaPage />} /> 
+            <Route path='giphy-page/:id' element={<OneGiphyPage />}/>   
+            <Route path='estudio-plaza' element={<EstudioPlazaPage />} />
+            <Route path='estudio-plaza/base-de-datos' element={<BaseDeDatosPages />} />    
         </Route>
         <Route path='/projects' element={<ProjectsPages /> } />
     </>

@@ -6,7 +6,6 @@ const useNearScreen = (externalRef?: React.MutableRefObject<HTMLDivElement | nul
     const [isNearScreen, setIsNearScreen] = useState(false);
     const refDiv = useRef<HTMLDivElement | null>(null);
     let element = externalRef ? externalRef : refDiv;
-    console.log(element?.current);
     useEffect(()=>{
         const onChange: IntersectionObserverCallback = (entries, observer ) => {
             const el = entries[0];

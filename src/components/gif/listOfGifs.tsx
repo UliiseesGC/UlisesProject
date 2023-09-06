@@ -12,7 +12,7 @@ const ListOfGifs = ({ search }: ListOfGifsProps) => {
   const { loadingGifs, gifs } = useGifs(search);
   const externalRef = useRef(null);
   const {isNearScreen} = useNearScreen(loadingGifs ? null : externalRef)
-  console.log(isNearScreen);
+  // console.log(isNearScreen);
 
   return (
     <>
@@ -23,7 +23,7 @@ const ListOfGifs = ({ search }: ListOfGifsProps) => {
             {gifs.map(({ id, title, url }) => (
               <Gif id={id} key={id} title={title} url={url} />
             ))}
-            <div id="adsasd" ref={externalRef} style={{width: '100px', height: '100px'}}> asd </div>
+            {/* <div id="adsasd" ref={externalRef} style={{width: '100px', height: '100px'}}> asd </div> */}
           </>
         ) : (
           <div>No GIF found with that name.</div>

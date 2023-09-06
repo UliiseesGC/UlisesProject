@@ -8,8 +8,6 @@ const GiphyPage = () => {
     const [search, setSearch] = useState<string>('Hello');
     const [key, setKey] = useState('');
 
-    const asd = useContext(Context);
-
     const handleSubmit = (e: any) => {
         e.preventDefault();
         setSearch(key);
